@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">JackIt Owners</string>
+    <string name="appTitle">JackIt Owner\'s App</string>
+    <string name="customerName">Name</string>
+    <string name="emptyString" />
+    <string name="customer_name_hint">Customer Name</string>
+    <string-array name="visit_type_array">
+        <item>Walk in</item>
+        <item>Follow Up</item>
+        <item>Reference</item>
+        <item>Old Customer</item>
+    </string-array>
+
+</resources>
