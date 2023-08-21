@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">JackIt Owners</string>
-    <string name="appTitle">JackIt Owner\'s App</string>
+    <string name="app_name">JackIt Owners\' App</string>
     <string name="customerName">Name</string>
     <string name="emptyString" />
     <string name="customer_name_hint">Customer Name</string>
@@ -9,6 +8,27 @@
         <item>Follow Up</item>
         <item>Reference</item>
         <item>Old Customer</item>
+    </string-array>
+    <string-array name="service_type_array">
+        <item>Repair</item>
+        <item>Service</item>
+        <item>Breakdown</item>
+        <item>Engine Work</item>
+        <item>Battery Charging</item>
+        <item>Follow up issue</item>
+    </string-array>
+    <string-array name="payment_status_array">
+        <item>Pending</item>
+        <item>Received</item>
+    </string-array>
+    <string-array name="payment_mode_array">
+        <item>GPay</item>
+        <item>Cash</item>
+    </string-array>
+    <string-array name="mechanic_array">
+        <item>Saroj</item>
+        <item>Naya Ladka</item>
+        <item>Saroj &amp; Naya Ladka</item>
     </string-array>
 
 </resources>

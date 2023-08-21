@@ -1,0 +1,20 @@
+DONE :
+when all the characters of date field are entered, the focus should automatically go to the next view DONE
+the date entry field should be implemented via date picker DONE
+after entering date via date picker, the focus should automatically move to the next field DONE
+ask for payment method only when payment is received DONE
+show discount and final price DONE
+remove the extra heading of JackIt Owner's App DONE
+Pin code should only be 6 digits, and then it should move to next cursor DONE
+change the color from purple to yellow/orange DONE
+the field labels - insurance expiry date and insurance company, are not shown completely DONE
+update logo DONE
+
+
+NOT REQUIRED:
+if insurance expired is no, only then insurance expiry date, and insurance company date fields should be shown : NA - the fields must be available irrespectively
+
+
+TO BE DONE:
+for vehicle number, switch the keypad between number and text as per the format
+save the parts' list in separate fields, rather than  '/' separated values

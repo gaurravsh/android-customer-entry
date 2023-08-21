@@ -5,366 +5,773 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
         tools:context=".MainActivity">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="16dp" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/center_guideline"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.4" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/appTitle"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/customerNameLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/customerName"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/customerNameField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:autofillHints="Customer Name"
+                android:ems="10"
+                android:hint="@string/customer_name_hint"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#FFD740"
-            android:paddingHorizontal="30dp"
-            android:text="@string/appTitle"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.50"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/customerNameLabel"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/visitTypeLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Visit Type"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinner_visit_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:contentDescription="Visit Type"
+                android:entries="@array/visit_type_array"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/customerName"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appTitle" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/customerNameField"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/customerAreaLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Area"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/customerAreaField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:hint="Customer Area"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/pincodeLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pin Code"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/pincodeField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:hint="Pin Code"
+                android:maxLength="6"
+                android:inputType="number"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/contactNumberLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Contact Number"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/contactNumberField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:hint="Enter WITHOUT +91"
+                android:inputType="phone"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/emailLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Email"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/emailField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/phoneNumberLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Phone Number"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/phoneNumberField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:autofillHints="Phone Number"
+                android:ems="10"
+                android:hint="Enter WITHOUT +91"
+                android:inputType="phone"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/amcLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="AMC"
+                android:textSize="16sp" />
+
+            <RadioGroup
+                android:id="@+id/amcGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/amcYes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/amcNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/customerTypeLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Customer Type"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/customerTypeField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:autofillHints="Customer Type"
+                android:ems="10"
+                android:hint="Customer Type"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/companyLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Company"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/companyField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:autofillHints="Customer Type"
+                android:ems="10"
+                android:hint="Company"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/modelLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Model"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/modelField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:autofillHints="Customer Type"
+                android:ems="10"
+                android:hint="Vehicle Model"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/colorLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Color"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/colorField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:autofillHints="Customer Type"
+                android:ems="10"
+                android:hint="Vehicle Color"
+                android:inputType="textPersonName|textAutoCorrect"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/bikeNumberLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Bike Number"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/bikeNumberField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:autofillHints="Customer Type"
+                android:ems="10"
+                android:hint="Bike Number"
+                android:inputType="text"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/insuranceExpiredLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="Insurance Expired?"
+                android:textSize="16sp" />
+
+            <RadioGroup
+                android:id="@+id/insuranceRadioGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/insuranceYes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/insuranceNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="No" />
+            </RadioGroup>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/insuranceExpiryDateLabel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Insurance Exp Date"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/insuranceExpiryDateField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textSize="16sp"
+                android:focusable="false"
+                android:hint="Insurance Expiry Date"
+                android:inputType="date"
+                android:longClickable="false" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/insuranceCompanyLabel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Insurance Company"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/insuranceCompanyField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textSize="16sp"
+                android:hint="Insurance Company Name"
+                android:inputType="textPersonName"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints="Customer Name"
-            android:ems="10"
-            android:hint="@string/customer_name_hint"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:singleLine="true"
-            android:textSize="16sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/customerNameLabel"
-            app:layout_constraintStart_toEndOf="@id/center_guideline" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/visitTypeLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="Visit Type"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/customerNameLabel"
-            app:layout_constraintTop_toBottomOf="@+id/customerNameLabel" />
+            <TextView
+                android:id="@+id/serviceTypeLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Type of Service"
+                android:textSize="16sp" />
 
-        <Spinner
-            android:id="@+id/spinner_visit_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="Visit Type"
-            android:entries="@array/visit_type_array"
-            android:minHeight="48dp"
-            android:visibility="visible"
-            app:layout_constraintBaseline_toBaselineOf="@id/visitTypeLabel"
-            app:layout_constraintStart_toEndOf="@id/center_guideline" />
+            <Spinner
+                android:id="@+id/spinner_service_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:contentDescription="Service Type"
+                android:entries="@array/service_type_array" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/customerAreaLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
-            android:text="Area"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/visitTypeLabel"
-            app:layout_constraintTop_toTopOf="@id/visitTypeLabel" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/customerAreaField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Customer Area"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textSize="16sp"
-            app:layout_constraintBaseline_toBaselineOf="@id/customerAreaLabel"
-            app:layout_constraintStart_toEndOf="@id/center_guideline" />
+            <TextView
+                android:id="@+id/dateOfServiceLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date of Service"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/pincodeLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
-            android:text="Pin Code"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/customerAreaLabel"
-            app:layout_constraintTop_toTopOf="@id/customerAreaLabel" />
+            <EditText
+                android:id="@+id/dateOfServiceField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:inputType="date"
+                android:longClickable="false"
+                android:focusable="false"/>
 
-        <EditText
-            android:id="@+id/pincodeField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Pin Code"
-            android:inputType="number"
-            android:minHeight="48dp"
-            android:textSize="16sp"
-            app:layout_constraintBaseline_toBaselineOf="@id/pincodeLabel"
-            app:layout_constraintStart_toEndOf="@id/center_guideline" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/contactNumberLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
-            android:text="Contact Number"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/pincodeLabel"
-            app:layout_constraintTop_toTopOf="@id/pincodeLabel" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/contactNumberField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Enter WITHOUT +91"
-            android:inputType="phone"
-            android:minHeight="48dp"
-            android:textSize="16sp"
-            app:layout_constraintBaseline_toBaselineOf="@id/contactNumberLabel"
-            app:layout_constraintStart_toEndOf="@id/center_guideline" />
+            <TextView
+                android:id="@+id/dateOfDeliveryLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date of Delivery"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/emailLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
-            android:text="Email"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/contactNumberLabel"
-            app:layout_constraintTop_toTopOf="@id/contactNumberLabel" />
+            <EditText
+                android:id="@+id/dateOfDeliveryField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:inputType="date"
+                android:longClickable="false"
+                android:focusable="false" />
 
-        <EditText
-            android:id="@+id/emailField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:minHeight="48dp"
-            android:textSize="16sp"
-            app:layout_constraintBaseline_toBaselineOf="@id/emailLabel"
-            app:layout_constraintStart_toEndOf="@id/center_guideline" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/phoneNumberLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
-            android:text="Phone Number"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/emailLabel"
-            app:layout_constraintTop_toTopOf="@id/emailLabel" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/phoneNumberField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autofillHints="Phone Number"
-            android:ems="10"
-            android:hint="Enter WITHOUT +91"
-            android:inputType="phone"
-            android:minHeight="48dp"
-            android:textSize="16sp"
-            app:layout_constraintBaseline_toBaselineOf="@id/phoneNumberLabel"
-            app:layout_constraintStart_toEndOf="@id/center_guideline" />
+            <TextView
+                android:id="@+id/itemDetailsLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Item Details :"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/amcLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="52dp"
-            android:text="AMC"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/phoneNumberLabel" />
 
-        <RadioGroup
-            android:id="@+id/amdGroup"
-            android:layout_width="wrap_content"
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@id/center_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/phoneNumberField">
+            android:id="@+id/partDetails">
+            <EditText
+                android:id="@+id/partName"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:inputType="textCapWords"
+                android:hint="Part Name"/>
+            <EditText
+                android:id="@+id/partAmount"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:inputType="number"
+                android:hint="Amount"/>
+            <EditText
+                android:id="@+id/partCost"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:inputType="number"
+                android:hint="Cost"/>
 
-
-            <RadioButton
-                android:id="@+id/amcYes"
+            <Button
+                android:id="@+id/add"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="Yes"
-                app:layout_constraintStart_toStartOf="@id/appTitle"
-                app:layout_constraintTop_toTopOf="@id/phoneNumberField" />
+                android:layout_height="wrap_content"
+                android:minWidth="20dp"
+                android:text="+" />
 
-            <RadioButton
-                android:id="@+id/amcNo"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="No"
-                app:layout_constraintStart_toStartOf="@id/amcYes"
-                app:layout_constraintTop_toTopOf="@id/phoneNumberField" />
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/customerTypeLabel"
-            android:layout_width="wrap_content"
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/containerForItems"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="52dp"
-            android:text="Customer Type"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/amcLabel" />
+            android:orientation="vertical">
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/customerTypeField"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:autofillHints="Customer Type"
-            android:ems="10"
-            android:hint="Customer Type"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:singleLine="true"
-            android:textSize="16sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/customerTypeLabel"
-            app:layout_constraintStart_toEndOf="@id/center_guideline" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/companyLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="52dp"
-            android:text="Company"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/customerTypeLabel" />
+            <TextView
+                android:id="@+id/totalAmountLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Total Amount"
+                android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/companyField"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:autofillHints="Customer Type"
-            android:ems="10"
-            android:hint="Company"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:singleLine="true"
-            android:textSize="16sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/companyLabel"
-            app:layout_constraintStart_toEndOf="@id/center_guideline" />
+            <TextView
+                android:id="@+id/totalAmountValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="0"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/modelLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="52dp"
-            android:text="Model"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/companyLabel" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/modelField"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:autofillHints="Customer Type"
-            android:ems="10"
-            android:hint="Vehicle Model"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:singleLine="true"
-            android:textSize="16sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/modelLabel"
-            app:layout_constraintStart_toEndOf="@id/center_guideline" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/colorLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="52dp"
-            android:text="Color"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/modelLabel" />
+            <TextView
+                android:id="@+id/totalCostLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Total Cost"
+                android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/colorField"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:autofillHints="Customer Type"
-            android:ems="10"
-            android:hint="Vehicle Color"
-            android:inputType="textPersonName|textAutoCorrect"
-            android:minHeight="48dp"
-            android:singleLine="true"
-            android:textSize="16sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/colorLabel"
-            app:layout_constraintStart_toEndOf="@id/center_guideline" />
+            <TextView
+                android:id="@+id/totalCostValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="0"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/bikeNumberLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="52dp"
-            android:text="Bike Number"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/colorLabel" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/bikeNumberField"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/revenueLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Revenue"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/revenueValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="0"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/profitMarginLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Profit Margin (%)"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/profitMarginValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="0"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/discountLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Discount"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/discountValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:inputType="number"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/finalPaymentLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Final Payment"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/finalPaymentValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="0"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints="Customer Type"
-            android:ems="10"
-            android:hint="Bike Number"
-            android:inputType="text"
-            android:minHeight="48dp"
-            android:singleLine="true"
-            android:textSize="16sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/bikeNumberLabel"
-            app:layout_constraintStart_toEndOf="@id/center_guideline" />
+            android:orientation="horizontal"
+            android:layout_marginVertical="5dp">
+
+            <TextView
+                android:id="@+id/paymentStatusLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Payment Status"
+                android:textSize="16sp"
+            />
+
+            <Spinner
+                android:id="@+id/spinner_payment_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:contentDescription="Payment Status"
+                android:entries="@array/payment_status_array"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/paymentModeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginVertical="5dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/paymentModeLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Payment Mode"
+                android:textSize="16sp"
+                />
+
+            <Spinner
+                android:id="@+id/spinner_payment_mode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:contentDescription="Payment Mode"
+                android:entries="@array/payment_mode_array"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginVertical="5dp">
+
+            <TextView
+                android:id="@+id/mechanicLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mechanic"
+                android:textSize="16sp"
+                />
+
+            <Spinner
+                android:id="@+id/spinner_mechanic_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:contentDescription="Mechanic Name"
+                android:entries="@array/mechanic_array"
+                android:textSize="16sp"/>
+        </LinearLayout>
 
         <Button
+            android:id="@+id/submitButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
             android:layout_gravity="center_horizontal|bottom"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:text="Submit" />
+    </LinearLayout>
 </ScrollView>
