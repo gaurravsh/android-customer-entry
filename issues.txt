@@ -9,6 +9,7 @@ Pin code should only be 6 digits, and then it should move to next cursor DONE
 change the color from purple to yellow/orange DONE
 the field labels - insurance expiry date and insurance company, are not shown completely DONE
 update logo DONE
+after part is added, focus should return back to part name DONE
 
 
 NOT REQUIRED:
@@ -18,3 +19,6 @@ if insurance expired is no, only then insurance expiry date, and insurance compa
 TO BE DONE:
 for vehicle number, switch the keypad between number and text as per the format
 save the parts' list in separate fields, rather than  '/' separated values
+check delivery date should be greater than service date
+display an alert after message is submitted
+on data submission, form should be reset

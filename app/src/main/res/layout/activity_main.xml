@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -31,10 +30,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:autofillHints="Customer Name"
                 android:ems="10"
                 android:hint="@string/customer_name_hint"
-                android:inputType="textPersonName"
+                android:inputType="textPersonName|textCapWords"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -81,7 +79,7 @@
                 android:layout_weight="2"
                 android:ems="10"
                 android:hint="Customer Area"
-                android:inputType="textPersonName"
+                android:inputType="textCapWords"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -116,7 +114,7 @@
             <TextView
                 android:id="@+id/contactNumberLabel"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Contact Number"
                 android:textSize="16sp" />
@@ -172,7 +170,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:autofillHints="Phone Number"
                 android:ems="10"
                 android:hint="Enter WITHOUT +91"
                 android:inputType="phone"
@@ -233,10 +230,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:autofillHints="Customer Type"
                 android:ems="10"
                 android:hint="Customer Type"
-                android:inputType="textPersonName"
+                android:inputType="textCapWords|textAutoComplete|textAutoCorrect"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -257,10 +253,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:autofillHints="Customer Type"
                 android:ems="10"
-                android:hint="Company"
-                android:inputType="textPersonName"
+                android:hint="Vehicle Company"
+                android:inputType="textCapWords"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -281,10 +276,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:autofillHints="Customer Type"
                 android:ems="10"
                 android:hint="Vehicle Model"
-                android:inputType="textPersonName"
+                android:inputType="textCapWords"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -305,10 +299,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:autofillHints="Customer Type"
                 android:ems="10"
                 android:hint="Vehicle Color"
-                android:inputType="textPersonName|textAutoCorrect"
+                android:inputType="textCapWords|textAutoCorrect|textAutoComplete"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -329,10 +322,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:autofillHints="Customer Type"
                 android:ems="10"
                 android:hint="Bike Number"
-                android:inputType="text"
+                android:inputType="textCapCharacters"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -350,7 +342,7 @@
                 android:textSize="16sp" />
 
             <RadioGroup
-                android:id="@+id/insuranceRadioGroup"
+                android:id="@+id/insuranceExpiredRadioGroup"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -418,7 +410,7 @@
                 android:layout_weight="2"
                 android:textSize="16sp"
                 android:hint="Insurance Company Name"
-                android:inputType="textPersonName"/>
+                android:inputType="textCapWords"/>
         </LinearLayout>
 
         <LinearLayout
@@ -462,6 +454,7 @@
                 android:layout_weight="2"
                 android:ems="10"
                 android:inputType="date"
+                android:hint="Date of Service"
                 android:longClickable="false"
                 android:focusable="false"/>
 
@@ -487,7 +480,8 @@
                 android:ems="10"
                 android:inputType="date"
                 android:longClickable="false"
-                android:focusable="false" />
+                android:focusable="false"
+                android:hint="Date of Delivery"/>
 
         </LinearLayout>
 
@@ -517,7 +511,6 @@
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
                 android:inputType="textCapWords"
                 android:hint="Part Name"/>
             <EditText
@@ -525,7 +518,6 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
                 android:inputType="number"
                 android:hint="Amount"/>
             <EditText
@@ -533,7 +525,6 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
                 android:inputType="number"
                 android:hint="Cost"/>
 
@@ -565,7 +556,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/totalAmountValue"
+                android:id="@+id/totalAmountField"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
