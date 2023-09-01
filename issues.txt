@@ -10,7 +10,8 @@ change the color from purple to yellow/orange DONE
 the field labels - insurance expiry date and insurance company, are not shown completely DONE
 update logo DONE
 after part is added, focus should return back to part name DONE
-
+display an alert after message is submitted DONE
+on data submission, form should be reset DONE
 
 NOT REQUIRED:
 if insurance expired is no, only then insurance expiry date, and insurance company date fields should be shown : NA - the fields must be available irrespectively
@@ -20,5 +21,3 @@ TO BE DONE:
 for vehicle number, switch the keypad between number and text as per the format
 save the parts' list in separate fields, rather than  '/' separated values
 check delivery date should be greater than service date
-display an alert after message is submitted
-on data submission, form should be reset

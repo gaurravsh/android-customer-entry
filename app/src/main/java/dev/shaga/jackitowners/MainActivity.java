@@ -2,21 +2,32 @@ package dev.shaga.jackitowners;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
+import com.google.gson.Gson;
 import dev.shaga.jackitowners.model.CustomerServiceDetails;
 import dev.shaga.jackitowners.model.PartDetails;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.io.entity.StringEntity;
 
+import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class MainActivity extends AppCompatActivity {
+    String displayMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -225,6 +236,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         submitButton.setOnClickListener(view -> {
+
+
             String visitTypeData = ((Spinner)findViewById(R.id.spinner_visit_type)).getSelectedItem().toString();
             String areaData = ((EditText)findViewById(R.id.customerAreaField)).getText().toString();
             String pincodeData = pincode.getText().toString();
@@ -233,7 +246,6 @@ public class MainActivity extends AppCompatActivity {
             String emailIdData = ((EditText)findViewById(R.id.emailField)).getText().toString();
             String phoneData = ((EditText)findViewById(R.id.phoneNumberField)).getText().toString();
             String customerTypeData = ((EditText)findViewById(R.id.customerTypeField)).getText().toString();
-
 
             String amcYesOrNoData = getSelectedRadioButtonValue(R.id.amcGroup);
             String vehicleCompanyData = ((EditText)findViewById(R.id.companyField)).getText().toString();
@@ -258,42 +270,102 @@ public class MainActivity extends AppCompatActivity {
             String paymentModeData = paymentModeSpinner.getSelectedItem().toString();
             String mechanicData = ((Spinner)findViewById(R.id.spinner_mechanic_name)).getSelectedItem().toString();
 
-            CustomerServiceDetails customerServiceDetails = new CustomerServiceDetails();
-            customerServiceDetails.setVisitType(visitTypeData);
-            customerServiceDetails.setArea(areaData);
-            customerServiceDetails.setPincode(pincodeData);
-            customerServiceDetails.setName(customerNameData);
-            customerServiceDetails.setContactNumber(contactNumberData);
-            customerServiceDetails.setEmailId(emailIdData);
-            customerServiceDetails.setPhoneNumber(phoneData);
-            customerServiceDetails.setCustomerType(customerTypeData);
-            customerServiceDetails.setAmc(amcYesOrNoData);
-            customerServiceDetails.setVehicleCompany(vehicleCompanyData);
-            customerServiceDetails.setVehicleModel(vehicleModelData);
-            customerServiceDetails.setVehicleColor(vehicleColorData);
-            customerServiceDetails.setBikeNumber(bikeNumberData);
-            customerServiceDetails.setBikeInsuranceExpiredYesOrNo(insuranceExpiredYesOrNoData);
-            customerServiceDetails.setInsuranceExpiryDate(insuranceExpiryDateData);
-            customerServiceDetails.setInsuranceCompanyName(insuranceCompanyData);
-            customerServiceDetails.setTypeOfService(serviceTypeData);
-            customerServiceDetails.setPartDetails(itemListData);
-            customerServiceDetails.setDateOfService(dateOfServiceData);
-            customerServiceDetails.setDeliveryDate(deliveryDateData);
-            customerServiceDetails.setTotalAmount(totalAmountData);
-            customerServiceDetails.setTotalCost(totalCostData);
-            customerServiceDetails.setRevenue(revenueData);
-            customerServiceDetails.setProfitMargin(profitMarginData);
-            customerServiceDetails.setDiscount(discountData);
-            customerServiceDetails.setFinalPayment(finalPaymentData);
-            customerServiceDetails.setFinalPayment(finalPaymentData);
-            customerServiceDetails.setPaymentStatus(paymentStatusData);
-            customerServiceDetails.setPaymentMode(paymentModeData);
-            customerServiceDetails.setMechanic(mechanicData);
+            StringBuilder warningBuilder = new StringBuilder();
+            if(visitTypeData.isBlank()) warningBuilder.append("Visit Type is empty\n");
+            if(customerNameData.isBlank()) warningBuilder.append("Customer Name is empty\n");
+            if(phoneData.isBlank() && contactNumberData.isBlank()) warningBuilder.append("Phone No or Contact No should be provided\n");
+            if(bikeNumberData.isBlank()) warningBuilder.append("Bike Number is empty\n");
+            if(itemListData.isEmpty()) warningBuilder.append("Part/Item details are empty\n");
+            if(dateOfServiceData.isBlank()) warningBuilder.append("Service Date is empty\n");
 
-            // Publish the message on SQS
-            // If success
+            String warning = warningBuilder.toString();
+            boolean isDataCorrect;
+
+            if(warning.isBlank()) {
+                isDataCorrect = true;
+                CustomerServiceDetails customerServiceDetails = new CustomerServiceDetails();
+                customerServiceDetails.setVisitType(visitTypeData);
+                customerServiceDetails.setArea(areaData);
+                customerServiceDetails.setPincode(pincodeData);
+                customerServiceDetails.setName(customerNameData);
+                customerServiceDetails.setContactNumber(contactNumberData);
+                customerServiceDetails.setEmailId(emailIdData);
+                customerServiceDetails.setPhoneNumber(phoneData);
+                customerServiceDetails.setCustomerType(customerTypeData);
+                customerServiceDetails.setAmc(amcYesOrNoData);
+                customerServiceDetails.setVehicleCompany(vehicleCompanyData);
+                customerServiceDetails.setVehicleModel(vehicleModelData);
+                customerServiceDetails.setVehicleColor(vehicleColorData);
+                customerServiceDetails.setBikeNumber(bikeNumberData);
+                customerServiceDetails.setBikeInsuranceExpiredYesOrNo(insuranceExpiredYesOrNoData);
+                customerServiceDetails.setInsuranceExpiryDate(insuranceExpiryDateData);
+                customerServiceDetails.setInsuranceCompanyName(insuranceCompanyData);
+                customerServiceDetails.setTypeOfService(serviceTypeData);
+                customerServiceDetails.setPartDetails(itemListData);
+                customerServiceDetails.setDateOfService(dateOfServiceData);
+                customerServiceDetails.setDeliveryDate(deliveryDateData);
+                customerServiceDetails.setTotalAmount(totalAmountData);
+                customerServiceDetails.setTotalCost(totalCostData);
+                customerServiceDetails.setRevenue(revenueData);
+                customerServiceDetails.setProfitMargin(profitMarginData);
+                customerServiceDetails.setDiscount(discountData);
+                customerServiceDetails.setFinalPayment(finalPaymentData);
+                customerServiceDetails.setFinalPayment(finalPaymentData);
+                customerServiceDetails.setPaymentStatus(paymentStatusData);
+                customerServiceDetails.setPaymentMode(paymentModeData);
+                customerServiceDetails.setMechanic(mechanicData);
 
 
+                int responseCode = persistServiceDetails(customerServiceDetails);
+
+
+                if (responseCode == 0 || responseCode / 100 >= 4) // failed if response code is not initialized,or it is 4XX, or 5XX
+                    displayMessage = "Message sending failed . .";
+                else
+                    displayMessage = "Message sent successfully !";
+            }
+            else{
+                isDataCorrect = false;
+                displayMessage = warning;
+            }
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Status");
+            builder.setMessage(displayMessage);
+
+            // add a button
+            builder.setPositiveButton("OK", (dialogInterface, i) -> {
+                dialogInterface.dismiss();
+                if(isDataCorrect) {
+                    ((EditText) findViewById(R.id.customerNameField)).setText("");
+                    ((Spinner) findViewById(R.id.spinner_visit_type)).setSelection(0);
+                    ((EditText) findViewById(R.id.customerAreaField)).setText("");
+                    ((EditText) findViewById(R.id.pincodeField)).setText("");
+                    ((EditText) findViewById(R.id.contactNumberField)).setText("");
+                    ((EditText) findViewById(R.id.emailField)).setText("");
+                    ((EditText) findViewById(R.id.phoneNumberField)).setText("");
+                    ((RadioGroup) findViewById(R.id.amcGroup)).clearCheck();
+                    ((EditText) findViewById(R.id.customerTypeField)).setText("");
+                    ((EditText) findViewById(R.id.companyField)).setText("");
+                    ((EditText) findViewById(R.id.modelField)).setText("");
+                    ((EditText) findViewById(R.id.colorField)).setText("");
+                    ((EditText) findViewById(R.id.bikeNumberField)).setText("");
+                    ((RadioGroup) findViewById(R.id.insuranceExpiredRadioGroup)).clearCheck();
+                    ((EditText) findViewById(R.id.insuranceExpiryDateField)).setText("");
+                    ((EditText) findViewById(R.id.insuranceCompanyField)).setText("");
+                    ((Spinner) findViewById(R.id.spinner_service_type)).setSelection(0);
+                    ((EditText) findViewById(R.id.dateOfServiceField)).setText("");
+                    ((EditText) findViewById(R.id.dateOfDeliveryField)).setText("");
+                    removeAllPartDetails(itemsContainer);
+                    ((EditText) findViewById(R.id.discountValue)).setText("");
+                    ((Spinner) findViewById(R.id.spinner_payment_status)).setSelection(0);
+                    ((Spinner) findViewById(R.id.spinner_mechanic_name)).setSelection(0);
+                }
+                displayMessage = "";
+                findViewById(R.id.customerNameField).requestFocus();
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
 
         });
     }
@@ -301,8 +373,12 @@ public class MainActivity extends AppCompatActivity {
     private String getSelectedRadioButtonValue(int radioGroupId){
         RadioGroup radioGroup = findViewById(radioGroupId);
         int selectedButtonId = radioGroup.getCheckedRadioButtonId();
+        if (selectedButtonId==-1)
+            return "";
         RadioButton selectedButton = findViewById(selectedButtonId);
-        return selectedButton.getText().toString();
+        CharSequence text = selectedButton.getText();
+        if(text==null) return "";
+        else return text.toString();
     }
 
     private List<PartDetails> getItemListData(LinearLayout layout){
@@ -310,7 +386,8 @@ public class MainActivity extends AppCompatActivity {
         return IntStream
                 .range(0,childCount)
                 .mapToObj( idx -> Arrays.stream(((TextView)((RelativeLayout)layout
-                        .getChildAt(idx)).getChildAt(1)) // Index 0 is for Remove Button
+                        .getChildAt(idx))
+                                .getChildAt(1)) // Index 0 is for Remove Button, 1 is for Text Field
                         .getText().toString() // Get each record
                         .split("/")) // Split every record, as it contains details in form of 'Part Name / Amount / Cost'
                         .map(String::trim)
@@ -319,5 +396,43 @@ public class MainActivity extends AppCompatActivity {
                 .stream()
                 .map( list -> new PartDetails(list.get(0),list.get(1),list.get(2)))
                 .collect(Collectors.toList());
+    }
+
+    private void removeAllPartDetails(LinearLayout layout){
+        int partDetailsCount = layout.getChildCount();
+        for(int recordIndex=0; recordIndex < partDetailsCount; recordIndex++){
+            RelativeLayout childLayout = (RelativeLayout) layout.getChildAt(recordIndex);
+            Button removeButton = (Button)childLayout.getChildAt(0); // Index 0 is for Remove Button, 1 is for Text Field
+            removeButton.callOnClick();
+        }
+    }
+
+    private int persistServiceDetails(CustomerServiceDetails serviceDetails){
+        Callable<Integer> task = () -> {
+            HttpPost httpPost = new HttpPost("");
+            String jsonString = new Gson().toJson(serviceDetails);
+            CloseableHttpClient httpClient;
+            int responseCode = 0;
+
+            try{
+                StringEntity entity = new StringEntity(jsonString, ContentType.APPLICATION_JSON);
+                httpClient = HttpClients.createDefault();
+                httpPost.setEntity(entity);
+                CloseableHttpResponse response = httpClient.execute(httpPost);
+                responseCode =  response.getCode();
+            }
+            catch(IOException exception){
+                exception.printStackTrace();
+            }
+            return responseCode;
+        };
+
+        ExecutorService service = Executors.newFixedThreadPool(1);
+        final Future<Integer> future = service.submit(task);
+        try {
+            return future.get();
+        } catch (ExecutionException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
